@@ -1,0 +1,14 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<h2>@ViewBag.Message</h2>
+<p>
+    @{ Html.BeginForm(FormMethod.Post); }
+    @Html.TextBox("takeawayPostcode")
+    <input type="submit" value="Enter PostCode for takeaway" />
+@{
+    Html.EndForm();
+}
+<br />
+</p>

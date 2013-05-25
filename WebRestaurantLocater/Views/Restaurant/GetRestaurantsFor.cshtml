@@ -1,0 +1,57 @@
+﻿@model IList<DomainLayer.Restaurant>
+
+@{
+    ViewBag.Title = "GetRestaurantsFor";
+}
+
+<table>
+    <tr>
+        <td>
+            @Html.Label("Restaurant Name")
+        </td>
+        <td>
+            @Html.Label("Restaurant Address")
+        </td>
+        <td>
+            @Html.Label("Restaurant Rating")
+        </td>
+        <td>
+            @Html.Label("Restaurant FoodType")
+        </td>
+        <td>
+            @Html.Label("Is Open Now")
+        </td>
+        <td>
+            @Html.Label("WebSite")
+        </td>
+        <td>
+            @Html.Label("Directions")
+        </td>
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => x[i].Name)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x[i].PostCode)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x[i].AverageRating)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x[i].Foodtype1)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x[i].Open)
+            </td>
+            <td>
+                @Html.ActionLink(Model[i].URL, Model[i].URL)
+            </td>
+            <td>
+                <button>Get Directions</button>
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,35 @@
+﻿@model IList<ViewModel.DirectionStep>
+
+@{
+    ViewBag.Title = "GetDirections";
+}
+
+<h2>GetDirections</h2>
+
+<table>
+    <tr>
+        <td>
+            @Html.Label("Distance")
+        </td>
+        <td>
+            @Html.Label("Duration")
+        </td>
+        <td>
+            @Html.Label("Directions")
+        </td>
+    </tr>
+    @for (int i = 0; i < Model.Count; i++)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(x => x[i].Distance)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x[i].Duration)
+            </td>
+            <td>
+                @Html.DisplayFor(x => x[i].HtmlText)
+            </td>
+        </tr>
+    }
+</table>

@@ -1,0 +1,121 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="start_location">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="lat" type="xs:string" minOccurs="0" />
+        <xs:element name="lng" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="end_location">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="lat" type="xs:string" minOccurs="0" />
+        <xs:element name="lng" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="duration">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="value" type="xs:string" minOccurs="0" />
+        <xs:element name="text" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="distance">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="value" type="xs:string" minOccurs="0" />
+        <xs:element name="text" type="xs:string" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="DirectionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="status" type="xs:string" minOccurs="0" />
+        <xs:element name="route" minOccurs="0" maxOccurs="unbounded">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="summary" type="xs:string" minOccurs="0" />
+              <xs:element name="copyrights" type="xs:string" minOccurs="0" />
+              <xs:element name="leg" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="start_address" type="xs:string" minOccurs="0" />
+                    <xs:element name="end_address" type="xs:string" minOccurs="0" />
+                    <xs:element name="step" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="travel_mode" type="xs:string" minOccurs="0" />
+                          <xs:element name="html_instructions" type="xs:string" minOccurs="0" />
+                          <xs:element ref="start_location" minOccurs="0" maxOccurs="unbounded" />
+                          <xs:element ref="end_location" minOccurs="0" maxOccurs="unbounded" />
+                          <xs:element name="polyline" minOccurs="0" maxOccurs="unbounded">
+                            <xs:complexType>
+                              <xs:sequence>
+                                <xs:element name="points" type="xs:string" minOccurs="0" />
+                              </xs:sequence>
+                            </xs:complexType>
+                          </xs:element>
+                          <xs:element ref="duration" minOccurs="0" maxOccurs="unbounded" />
+                          <xs:element ref="distance" minOccurs="0" maxOccurs="unbounded" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element ref="duration" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element ref="distance" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element ref="start_location" minOccurs="0" maxOccurs="unbounded" />
+                    <xs:element ref="end_location" minOccurs="0" maxOccurs="unbounded" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="overview_polyline" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="points" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+              <xs:element name="bounds" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="southwest" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lat" type="xs:string" minOccurs="0" />
+                          <xs:element name="lng" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="northeast" minOccurs="0" maxOccurs="unbounded">
+                      <xs:complexType>
+                        <xs:sequence>
+                          <xs:element name="lat" type="xs:string" minOccurs="0" />
+                          <xs:element name="lng" type="xs:string" minOccurs="0" />
+                        </xs:sequence>
+                      </xs:complexType>
+                    </xs:element>
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true">
+    <xs:complexType>
+      <xs:choice minOccurs="0" maxOccurs="unbounded">
+        <xs:element ref="start_location" />
+        <xs:element ref="end_location" />
+        <xs:element ref="duration" />
+        <xs:element ref="distance" />
+        <xs:element ref="DirectionsResponse" />
+      </xs:choice>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

@@ -1,0 +1,379 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://just-eat.com/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://just-eat.com/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://just-eat.com/">
+      <s:element name="postcode" type="s:string" />
+      <s:element name="getRestaurantListResult">
+        <s:complexType mixed="true">
+          <s:sequence>
+            <s:any />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRestaurantData">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="restaurantId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="postcode" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getRestaurantDataResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getRestaurantDataResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="getAllPostcodes">
+        <s:complexType />
+      </s:element>
+      <s:element name="getAllPostcodesResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="getAllPostcodesResult">
+              <s:complexType mixed="true">
+                <s:sequence>
+                  <s:any />
+                </s:sequence>
+              </s:complexType>
+            </s:element>
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeliveryAreaServerValidation">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="postcode" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="restaurantId" type="s:int" />
+            <s:element minOccurs="0" maxOccurs="1" name="orderType" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="DeliveryAreaServerValidationResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="DeliveryAreaServerValidationResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="boolean" type="s:boolean" />
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="getRestaurantListSoapIn">
+    <wsdl:part name="postcode" element="tns:postcode" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantListSoapOut">
+    <wsdl:part name="getRestaurantListResult" element="tns:getRestaurantListResult" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantDataSoapIn">
+    <wsdl:part name="parameters" element="tns:getRestaurantData" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantDataSoapOut">
+    <wsdl:part name="parameters" element="tns:getRestaurantDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="getAllPostcodesSoapIn">
+    <wsdl:part name="parameters" element="tns:getAllPostcodes" />
+  </wsdl:message>
+  <wsdl:message name="getAllPostcodesSoapOut">
+    <wsdl:part name="parameters" element="tns:getAllPostcodesResponse" />
+  </wsdl:message>
+  <wsdl:message name="DeliveryAreaServerValidationSoapIn">
+    <wsdl:part name="parameters" element="tns:DeliveryAreaServerValidation" />
+  </wsdl:message>
+  <wsdl:message name="DeliveryAreaServerValidationSoapOut">
+    <wsdl:part name="parameters" element="tns:DeliveryAreaServerValidationResponse" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantListHttpGetIn">
+    <wsdl:part name="postcode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantListHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantDataHttpGetIn">
+    <wsdl:part name="restaurantId" type="s:string" />
+    <wsdl:part name="postcode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantDataHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getAllPostcodesHttpGetIn" />
+  <wsdl:message name="getAllPostcodesHttpGetOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="DeliveryAreaServerValidationHttpGetIn">
+    <wsdl:part name="postcode" type="s:string" />
+    <wsdl:part name="restaurantId" type="s:string" />
+    <wsdl:part name="orderType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeliveryAreaServerValidationHttpGetOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantListHttpPostIn">
+    <wsdl:part name="postcode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantListHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantDataHttpPostIn">
+    <wsdl:part name="restaurantId" type="s:string" />
+    <wsdl:part name="postcode" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="getRestaurantDataHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="getAllPostcodesHttpPostIn" />
+  <wsdl:message name="getAllPostcodesHttpPostOut">
+    <wsdl:part name="Body" />
+  </wsdl:message>
+  <wsdl:message name="DeliveryAreaServerValidationHttpPostIn">
+    <wsdl:part name="postcode" type="s:string" />
+    <wsdl:part name="restaurantId" type="s:string" />
+    <wsdl:part name="orderType" type="s:string" />
+  </wsdl:message>
+  <wsdl:message name="DeliveryAreaServerValidationHttpPostOut">
+    <wsdl:part name="Body" element="tns:boolean" />
+  </wsdl:message>
+  <wsdl:portType name="webservicesSoap">
+    <wsdl:operation name="getRestaurantList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of restaurants available for delivery/pickup in a postcode.</wsdl:documentation>
+      <wsdl:input message="tns:getRestaurantListSoapIn" />
+      <wsdl:output message="tns:getRestaurantListSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns data of a specific restaurant a postcode.&lt;br&gt;If postcode is set to 0 the data is fetched for the zipcode of the restaurant.</wsdl:documentation>
+      <wsdl:input message="tns:getRestaurantDataSoapIn" />
+      <wsdl:output message="tns:getRestaurantDataSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all postcodes.</wsdl:documentation>
+      <wsdl:input message="tns:getAllPostcodesSoapIn" />
+      <wsdl:output message="tns:getAllPostcodesSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks to see if restaurant will deliver to postcode</wsdl:documentation>
+      <wsdl:input message="tns:DeliveryAreaServerValidationSoapIn" />
+      <wsdl:output message="tns:DeliveryAreaServerValidationSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="webservicesHttpGet">
+    <wsdl:operation name="getRestaurantList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of restaurants available for delivery/pickup in a postcode.</wsdl:documentation>
+      <wsdl:input message="tns:getRestaurantListHttpGetIn" />
+      <wsdl:output message="tns:getRestaurantListHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns data of a specific restaurant a postcode.&lt;br&gt;If postcode is set to 0 the data is fetched for the zipcode of the restaurant.</wsdl:documentation>
+      <wsdl:input message="tns:getRestaurantDataHttpGetIn" />
+      <wsdl:output message="tns:getRestaurantDataHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all postcodes.</wsdl:documentation>
+      <wsdl:input message="tns:getAllPostcodesHttpGetIn" />
+      <wsdl:output message="tns:getAllPostcodesHttpGetOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks to see if restaurant will deliver to postcode</wsdl:documentation>
+      <wsdl:input message="tns:DeliveryAreaServerValidationHttpGetIn" />
+      <wsdl:output message="tns:DeliveryAreaServerValidationHttpGetOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="webservicesHttpPost">
+    <wsdl:operation name="getRestaurantList">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns a list of restaurants available for delivery/pickup in a postcode.</wsdl:documentation>
+      <wsdl:input message="tns:getRestaurantListHttpPostIn" />
+      <wsdl:output message="tns:getRestaurantListHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns data of a specific restaurant a postcode.&lt;br&gt;If postcode is set to 0 the data is fetched for the zipcode of the restaurant.</wsdl:documentation>
+      <wsdl:input message="tns:getRestaurantDataHttpPostIn" />
+      <wsdl:output message="tns:getRestaurantDataHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Returns all postcodes.</wsdl:documentation>
+      <wsdl:input message="tns:getAllPostcodesHttpPostIn" />
+      <wsdl:output message="tns:getAllPostcodesHttpPostOut" />
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <wsdl:documentation xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">Checks to see if restaurant will deliver to postcode</wsdl:documentation>
+      <wsdl:input message="tns:DeliveryAreaServerValidationHttpPostIn" />
+      <wsdl:output message="tns:DeliveryAreaServerValidationHttpPostOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="webservicesSoap" type="tns:webservicesSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getRestaurantList">
+      <soap:operation soapAction="http://just-eat.com/getRestaurantList" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <soap:operation soapAction="http://just-eat.com/getRestaurantData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <soap:operation soapAction="http://just-eat.com/getAllPostcodes" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <soap:operation soapAction="http://just-eat.com/DeliveryAreaServerValidation" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="webservicesSoap12" type="tns:webservicesSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="getRestaurantList">
+      <soap12:operation soapAction="http://just-eat.com/getRestaurantList" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <soap12:operation soapAction="http://just-eat.com/getRestaurantData" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <soap12:operation soapAction="http://just-eat.com/getAllPostcodes" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <soap12:operation soapAction="http://just-eat.com/DeliveryAreaServerValidation" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="webservicesHttpGet" type="tns:webservicesHttpGet">
+    <http:binding verb="GET" />
+    <wsdl:operation name="getRestaurantList">
+      <http:operation location="/getRestaurantList" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <http:operation location="/getRestaurantData" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <http:operation location="/getAllPostcodes" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <http:operation location="/DeliveryAreaServerValidation" />
+      <wsdl:input>
+        <http:urlEncoded />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="webservicesHttpPost" type="tns:webservicesHttpPost">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getRestaurantList">
+      <http:operation location="/getRestaurantList" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getRestaurantData">
+      <http:operation location="/getRestaurantData" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="getAllPostcodes">
+      <http:operation location="/getAllPostcodes" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:content part="Body" type="text/xml" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="DeliveryAreaServerValidation">
+      <http:operation location="/DeliveryAreaServerValidation" />
+      <wsdl:input>
+        <mime:content type="application/x-www-form-urlencoded" />
+      </wsdl:input>
+      <wsdl:output>
+        <mime:mimeXml part="Body" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="webservices">
+    <wsdl:port name="webservicesSoap" binding="tns:webservicesSoap">
+      <soap:address location="http://www.just-eat.co.uk/webservice/webservices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="webservicesSoap12" binding="tns:webservicesSoap12">
+      <soap12:address location="http://www.just-eat.co.uk/webservice/webservices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="webservicesHttpGet" binding="tns:webservicesHttpGet">
+      <http:address location="http://www.just-eat.co.uk/webservice/webservices.asmx" />
+    </wsdl:port>
+    <wsdl:port name="webservicesHttpPost" binding="tns:webservicesHttpPost">
+      <http:address location="http://www.just-eat.co.uk/webservice/webservices.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
