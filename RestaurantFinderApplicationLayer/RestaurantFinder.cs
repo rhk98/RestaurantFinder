@@ -23,5 +23,11 @@ namespace RestaurantFinderApplicationLayer
                 throw new Exception("Error getting restaurants from Service. Aborting!");
             return restaurants.MyRestaurants.OrderByDescending(x => x.AverageRating).ToList();
         }
+
+
+        public void TestForKiss()
+        {
+            throw new NotImplementedException();
+        }
     }
 }
