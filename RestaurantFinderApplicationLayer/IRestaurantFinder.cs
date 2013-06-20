@@ -9,5 +9,7 @@ namespace RestaurantFinderApplicationLayer
     public interface IRestaurantFinder
     {
         IList<Restaurant> GetRestaurantForPostCodeSortedByRating(string postCode);
+
+        void TestForKiss();
     }
 }
